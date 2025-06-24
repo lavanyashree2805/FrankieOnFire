@@ -1,7 +1,7 @@
 streamlit
-deepface
-pdf2image
 pytesseract
 opencv-python-headless
 Pillow
 numpy
+pdf2image
+deepface
