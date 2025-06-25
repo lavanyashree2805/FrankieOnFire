@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Verification</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api@1.7.12/dist/face-api.min.js"></script>
+  <script src="translations.js"></script>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <button id="theme-toggle" title="Toggle Theme">🌗</button>
+      <select id="lang-select" title="Select Language">
+        <option value="eng">🌐 English</option>
+        <option value="hin">हिन्दी</option>
+        <option value="tam">தமிழ்</option>
+        <option value="tel">తెలుగు</option>
+        <option value="kan">ಕನ್ನಡ</option>
+        <option value="mal">മലയാളം</option>
+      </select>
+      <h1 data-i18n="title">User Verification</h1>
+    </div>
+  </header>
+  <main>
+    <form id="verify-form">
+      <label for="name" data-i18n="label_name">Name:</label>
+      <input type="text" id="name" placeholder="Enter your name" data-i18n-placeholder="placeholder_name" required />
+
+      <label for="age" data-i18n="label_age">Age:</label>
+      <input type="number" id="age" placeholder="Enter your age" data-i18n-placeholder="placeholder_age" min="1" required />
+
+      <label for="dob" data-i18n="label_dob">Date of Birth:</label>
+      <input type="date" id="dob" required />
+
+      <label data-i18n="label_capture">Capture Image:</label>
+      <p id="camera-guide" data-i18n="camera_guide">Ensure good lighting, hold still, and only one face in the frame.</p>
+      <button type="button" id="camera-btn" data-i18n="open_camera">Open Camera</button>
+      <video id="video" width="320" height="240" autoplay></video>
+      <canvas id="canvas" width="320" height="240"></canvas>
+      <img id="captured-img" src="" alt="Captured Image" style="display: none;" />
+
+      <button type="button" id="capture-btn" data-i18n="capture_photo">Capture Photo</button>
+      <button type="button" id="retake-btn" data-i18n="retake_photo">Retake Photo</button>
+
+      <label for="document" data-i18n="upload_doc">Upload Document:</label>
+      <div id="drop-zone">
+        <p data-i18n="drop_file">Drag & drop a file here or click to select</p>
+        <input type="file" id="document" accept="image/*,.pdf" hidden required />
+      </div>
+      <div id="file-preview"></div>
+
+      <button type="submit" data-i18n="submit">Submit</button>
+    </form>
+    <div id="result"></div>
+  </main>
+  <div id="toast" class="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>

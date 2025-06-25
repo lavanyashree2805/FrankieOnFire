@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title data-i18n="title">User Verification</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="translations.js"></script>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <button id="theme-toggle" title="Toggle Theme">🌗</button>
+      <select id="lang-select" title="Select Language">
+        <option value="eng">🌐 English</option>
+        <option value="hin">हिन्दी</option>
+        <option value="tam">தமிழ்</option>
+        <option value="tel">తెలుగు</option>
+        <option value="kan">ಕನ್ನಡ</option>
+        <option value="mal">മലയാളം</option>
+      </select>
+      <h1 data-i18n="title">User Verification</h1>
+    </div>
+  </header>
+  <main>
+    <div class="form" style="padding: 35px; background: white; border-radius: 16px; box-shadow: 0 12px 30px rgba(0,0,0,0.1); max-width: 600px; margin: auto;">
+      <h2 data-i18n="summary_title" style="text-align:center; margin-bottom: 20px;">Verification Summary</h2>
+
+      <p><strong data-i18n="label_name">Name:</strong> <span id="summary-name">---</span></p>
+      <p><strong data-i18n="label_age">Age:</strong> <span id="summary-age">---</span></p>
+      <p><strong data-i18n="label_dob">Date of Birth:</strong> <span id="summary-dob">---</span></p>
+      <p><strong data-i18n="label_adult">Above 18:</strong> <span id="summary-adult" style="font-weight:bold;"></span></p>
+      <p><strong data-i18n="label_match">Face Match:</strong> <span id="summary-match" style="font-weight:bold;"></span></p>
+
+      <div style="margin-top: 30px; text-align: center;">
+        <button onclick="window.location.href='index.html'" data-i18n="back_btn">🔙 Back to Verification</button>
+      </div>
+    </div>
+  </main>
+  <div id="toast" class="toast"></div>
+  <script>
+    const langSelect = document.getElementById('lang-select');
+    const themeToggle = document.getElementById('theme-toggle');
+
+    const defaultLang = localStorage.getItem('lang') || 'eng';
+    langSelect.value = defaultLang;
+
+    function translatePage(lang) {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+    }
+
+    translatePage(defaultLang);
+
+    langSelect.addEventListener('change', () => {
+      const selectedLang = langSelect.value;
+      localStorage.setItem('lang', selectedLang);
+      translatePage(selectedLang);
+    });
+
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark');
+    }
+
+    themeToggle.onclick = () => {
+      document.body.classList.toggle('dark');
+      localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get('name');
+    const age = parseInt(params.get('age'));
+    const dob = params.get('dob');
+
+    const isAdult = age >= 18;
+    const faceMatch = true; // simulate match
+
+    document.getElementById('summary-name').textContent = name || 'N/A';
+    document.getElementById('summary-age').textContent = age || 'N/A';
+    document.getElementById('summary-dob').textContent = dob || 'N/A';
+    document.getElementById('summary-adult').textContent = isAdult ? '✅ Yes' : '❌ No';
+    document.getElementById('summary-match').textContent = faceMatch ? '✅ Match Found' : '❌ No Match';
+    document.getElementById('summary-adult').style.color = isAdult ? '#2e7d32' : '#d32f2f';
+    document.getElementById('summary-match').style.color = faceMatch ? '#2e7d32' : '#d32f2f';
+  </script>
+</body>
+</html>
