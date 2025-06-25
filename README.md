@@ -166,15 +166,6 @@ A web application for user identity verification using OCR (Tesseract) for Aadha
      - Compare the selfie with the Aadhaar image using DeepFace.
    - Results are displayed with success or error messages.
 
-### Demo Video
-
-- A demo video will showcase:
-  - Launching the local server.
-  - Filling the form in multiple languages.
-  - Capturing a selfie and uploading an Aadhaar document.
-  - Displaying verification results.
-- Record the demo using screen recording software (e.g., OBS Studio).
-
 ### Troubleshooting
 
 - **Tesseract Not Found**: Ensure Tesseract-OCR is installed and the path is correct in `app.py`.
@@ -183,14 +174,7 @@ A web application for user identity verification using OCR (Tesseract) for Aadha
   - Verify TensorFlow installation: `pip show tensorflow`.
   - Ensure sufficient RAM (8 GB+).
   - If DeepFace fails to load models, check the model files in `~/.deepface/weights/` and re-run `pip install deepface`.
+  -Ensure that TensorFlow version 2.5.0 or higher is installed for compatibility with Python 3.9.12 , as required by the DeepFace framework.
 - **Camera Access Denied**: Check browser permissions for camera access.
 - **OCR Errors**: Ensure the Aadhaar document is clear and high-quality (300 DPI recommended).
 
-### Future Improvements
-
-- Optimize DeepFace models for faster inference.
-- Add support for additional document types (e.g., passport, driver’s license).
-- Deploy to a cloud platform (e.g., Heroku, AWS) for production.
-- Enhance OCR accuracy with advanced preprocessing.
-
-### 
