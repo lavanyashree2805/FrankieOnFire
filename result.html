@@ -81,7 +81,15 @@
 
     document.getElementById('summary-name').textContent = name || 'N/A';
     document.getElementById('summary-age').textContent = age || 'N/A';
-    document.getElementById('summary-dob').textContent = dob || 'N/A';
+    function formatDate(inputDate) {
+      const date = new Date(inputDate);
+      if (isNaN(date)) return 'N/A';
+      
+      const options = { day: '2-digit', month: 'long', year: 'numeric' };
+      return date.toLocaleDateString('en-IN', options);  
+    }
+    
+    document.getElementById('summary-dob').textContent = formatDate(dob);
     document.getElementById('summary-adult').textContent = isAdult ? '✅ Yes' : '❌ No';
     document.getElementById('summary-match').textContent = faceMatch ? '✅ Match Found' : '❌ No Match';
     document.getElementById('summary-adult').style.color = isAdult ? '#2e7d32' : '#d32f2f';
