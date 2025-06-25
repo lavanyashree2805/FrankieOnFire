@@ -174,7 +174,7 @@ A web application for user identity verification using OCR (Tesseract) for Aadha
   - Verify TensorFlow installation: `pip show tensorflow`.
   - Ensure sufficient RAM (8 GB+).
   - If DeepFace fails to load models, check the model files in `~/.deepface/weights/` and re-run `pip install deepface`.
-  -Ensure that TensorFlow version 2.5.0 or higher is installed for compatibility with Python 3.9.12 , as required by the DeepFace framework.
+  - Ensure that TensorFlow version 2.5.0 or higher is installed for compatibility with Python 3.9.12 , as required by the DeepFace framework.
 - **Camera Access Denied**: Check browser permissions for camera access.
 - **OCR Errors**: Ensure the Aadhaar document is clear and high-quality (300 DPI recommended).
 
