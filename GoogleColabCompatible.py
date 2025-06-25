@@ -108,7 +108,7 @@ def main():
         threshold = 50.0  # 50% match threshold
 
         print("\nFace Match Result:")
-        print(f"Match Score: {similarity_score:.2f}%")
+        print(f"Confidence Score: {similarity_score:.2f}%")
 
         if similarity_score >= threshold:
             print("✅ Faces Matched")
