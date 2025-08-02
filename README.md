@@ -3,6 +3,7 @@
 A web application for user identity verification using OCR (Tesseract) for Aadhaar document processing and face verification (DeepFace with VGG-Face model). The frontend is built with HTML, CSS, and JavaScript, and the backend uses Flask. This project is designed to run locally for demo purposes.
 
 ## Project Demo
+Click on the image below to view the demo:
 [![Watch the video](Images/zynga_demo.png)](https://drive.google.com/file/d/1LAnRKmG2w-VC1YOrQRLsYU5VfX5CuzBT/view)
 
 ## Features
